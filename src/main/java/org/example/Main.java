@@ -26,16 +26,33 @@ public class Main {
 
         float[] roots = root(a, b, c);
 
-        if (roots == null){
+        if (roots == null) {
             System.out.println("нет вещественных корней");
         } else
             System.out.println(roots[0] + " " + roots[1]);
 
+
+        System.out.println("Сумма ряда равна " + sequenceSum());
+
+        string = scanner.next();
+        reversed = reverse(string);
+        System.out.println("Проверка на палиндром " + string.equals(reversed));
     }
+
+    public static double sequenceSum() {
+        double member = 1;
+        double sum = 0;
+
+        for (int n = 2; member > 0.000001; n++) {
+            member = 1.0 / (n * n + n - 2);
+            sum += member;
+        }
+        return sum;
+    }
+
 
     public static float[] root(float a, float b, float c) {
         float D = b * b - 4 * a * c;
-
 
         if (D >= 0) {
             float x1 = (float) ((-b - sqrt(D)) / (2 * a));
@@ -43,16 +60,15 @@ public class Main {
             return new float[]{x1, x2};
         } else
             return null;
-
     }
 
     public static String reverse(String str) {
-        String reversed = "";
+        StringBuilder reversed = new StringBuilder();
 
         for (int i = str.length() - 1; i >= 0; i--) {
-            reversed += str.charAt(i);
+            reversed.append(str.charAt(i));
         }
-        return reversed;
+        return reversed.toString();
     }
 
     public static List<String> sequence(int n) {
