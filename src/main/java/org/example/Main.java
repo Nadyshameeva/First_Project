@@ -35,9 +35,13 @@ public class Main {
         System.out.println("Сумма ряда равна " + sequenceSum());
 
         string = scanner.next();
-        reversed = reverse(string);
-        System.out.println("Проверка на палиндром " + string.equals(reversed));
+        System.out.println("Проверка на палиндром " + isPalindrome(string));
     }
+
+    public static boolean isPalindrome(String palindrome) {
+        return palindrome.equals(reverse(palindrome));
+    }
+
 
     public static double sequenceSum() {
         double member = 1;
